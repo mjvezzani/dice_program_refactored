@@ -18,14 +18,7 @@ puts "Please select your dice"
                                4 => 10,
                                5 => 12,
                                6 => 20}
-
-@amount_of_dice_types = {4 => 0,
-                         6 => 0,
-                         8 => 0,
-                         10 => 0,
-                         12 => 0,
-                         20 => 0}
-
+ 
 def get_dice_number(num)
   puts "How many #{@menu_choice_dice_side_hash[num]}-sided dice would you like?"
   amount_choice = gets.chomp.to_i
@@ -44,11 +37,8 @@ end
 
 dice_set = DiceSet.new(@dice_collection)
 puts "Here are your dice:"
-#dice_set.set_dice_types
-dice_set.dice.each do |x|
-  @amount_of_dice_types[x.sides] += 1
-end
+dice_set.set_dice_types
 
-@amount_of_dice_types.each do |k, v|
+dice_set.amount_of_dice_types.each do |k, v|
   puts "#{k}-sided dice: #{v}" if v > 0
 end
